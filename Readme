@@ -1,3 +1,7 @@
+#MyDDNS
+
+A project created to sync my ipv6 global adrress with my cloudflare AAAA record
+
 // Create a settings.json document with your config
 
 {
