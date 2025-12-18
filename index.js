@@ -67,7 +67,8 @@ async function updateCloudflare(ipv6) {
 // Verify ipv6 changed
 function verifyIpv6() {
   // Command to read ipv6
-  const command = `ip -6 -o addr show dev ${INTERFACE} scope global | awk '{print $4}' | cut -d/ -f1 | head -n1`
+  const command = `ip -6 -o addr show scope global | awk '/dynamic/ && $4 !~ /^fd/ {print $4}' | cut -d/ -f1`
+  // const command = `ip -6 -o addr show dev ${INTERFACE} scope global | awk '{print $4}' | cut -d/ -f1 | head -n1`
 
   exec(command, async (err, stdout) => {
     const actualIpv6 = stdout.trim()
